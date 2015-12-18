@@ -109,13 +109,33 @@
                 </table>
                 <div>
                     <button type="button" class="btn btn-link" ng-click="vm.clearAll()">Clear All</button>
-                    <button type="submit" class="btn btn-success" ng-click="vm.submit()">Submit</button>
+                    <button type="submit" class="btn btn-success" ng-click="vm.submit()">Continue</button>
                 </div>
 
             </div>
         </div>
 
-
+        <!-- shop details -->
+        <div class="shop-details row" ng-show="vm.finishOrder">
+            <p class="lead">4. Finish your order</p>
+            <form class="form-inline" role="form" name="discountForm" ng-hide="vm.hideForm">
+                <label for="a">Enter your code to get 30% discount:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your code" name="discountCode"
+                            ng-model="vm.discountCode">
+                </div>
+                <button type="submit" class="btn btn-primary" ng-disabled="discountForm.$invalid" ng-click="vm.validate()">Validate code</button>
+            </form>
+            <div ng-show="vm.errorValidate">This code is invalid. Try again!</div>
+            <div>
+                <p ng-show="vm.hideForm">Code accepted!</p>
+                <p>Total price: {{vm.sum | currency}}</p>
+                <div>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.shopDevelopers()">Shop now</button>
+                </div>
+            </div>
+            <div ng-show="vm.orderSuccess">Congratulations!</div>
+        </div>
 
     </div>
 

@@ -11,13 +11,18 @@
         var vm = this;
 
         vm.developersCart = Developers;
+        vm.errorValidate = false;
+        vm.finishOrder = false;
+        vm.orderSuccess = false;
 
         vm.addToCart = addToCart;
         vm.clearAll = clearAll;
         vm.remove = remove;
         vm.search = search;
+        vm.shopDevelopers = shopDevelopers;
         vm.submit = submit;
         vm.sumSubtotal = sumSubtotal;
+        vm.validate = validate;
 
         vm.developersCart.$watch(sumSubtotal);
 
@@ -64,7 +69,13 @@
     		});
     	};
 
-    	function submit(){};
+        function shopDevelopers(){
+            vm.orderSuccess = true;
+        };
+
+    	function submit(){
+            vm.finishOrder = true;
+        };
 
         function sumSubtotal(){
             vm.sum = 0;
@@ -73,6 +84,17 @@
                     vm.sum = vm.sum + (developer.hour * developer.price);
                 }
             });
+        };
+
+        function validate(){
+            if (vm.discountCode === "SHIPTO") {
+                vm.sum = vm.sum * 0.7;
+                vm.errorValidate = false;
+                vm.hideForm = true;
+            }
+            else {
+                vm.errorValidate = true;
+            }
         }
 
     };
