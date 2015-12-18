@@ -10,7 +10,7 @@
         function Organization($http){
             var service = {
                 getOrganization: getOrganization,
-                getOrganizationMembers: getOrganizationMembers
+                getOrganizationDevelopers: getOrganizationDevelopers
             };
             return service;
 
@@ -19,7 +19,7 @@
                 return $http.get(url);
             };
 
-            function getOrganizationMembers(name){
+            function getOrganizationDevelopers(name){
                 var url = "https://api.github.com/orgs/" + name + "/members";
                 return $http.get(url);
             };

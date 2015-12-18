@@ -8,8 +8,8 @@
         Developers.$inject = ['$firebaseArray'];
 
         function Developers($firebaseArray){
-            var developers = new Firebase("https://devshop.firebaseio.com/developers");
-            return $firebaseArray(developers);
+            var developersCart = new Firebase("https://devshop.firebaseio.com/developers");
+            return $firebaseArray(developersCart);
         };
 
 })();

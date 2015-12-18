@@ -30,58 +30,72 @@
                     <input type="search" class="form-control" placeholder="Type an organization" name="search"
                             ng-model="vm.organizationName">
                 </div>
-                <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
+                <button type="submit" class="btn btn-primary" ng-click="vm.search()">Search</button>
             </form>
-            <div>{{organization}}</div>
         </div>
 
         <!-- dev org list -->
         <div class="dev-list row">
             <p class="lead">2. Add developers</p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Price</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="product">
-                        <td>{{developer.username}}</td>
-                        <td>{{developer.price}}</td>
-                        <td><button type="submit" class="btn btn-success" ng-click="addToCart()">Add to cart</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="developer in vm.developers">
+                            <td>
+                                <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}"> {{developer.login}}
+                            </td>
+                            <td>{{developer.price}}</td>
+                            <td>
+                                <a class="btn btn-link btn-sm" role="button" target="_blank" ng-href="{{developer.html_url}}">See profile</a>
+                                <button type="submit" class="btn btn-success btn-sm" ng-click="vm.addToCart(developer)">Add to cart</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- cart list -->
         <div class="dev-cart row">
             <p class="lead">3. Check and submit your developer list</p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Price</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="product">
-                        <td>{{developer.username}}</td>
-                        <td>{{developer.price}}</td>
-                        <td><button class="btn btn-danger pull-right" ng-click="remove()">Remove</button></td>
-                    </tr>
-                    <tr class="total">
-                        <td><strong>Total</strong></td>
-                        <td>$100</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <button type="button" class="btn btn-link" ng-click="clearAll()">Clear All</button>
-                <button type="submit" class="btn btn-success" ng-click="submit()">Submit</button>
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="developer in vm.developersCart">
+                            <td>
+                                <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}"> {{developer.login}}
+                            </td>
+                            <td>1000</td>
+                            <td>
+                                <a class="btn btn-link btn-sm" role="button" target="_blank" ng-href="{{developer.html_url}}">See profile</a>
+                                <button class="btn btn-danger btn-sm" ng-click="vm.remove(developer)">Remove from cart</button>
+                            </td>
+                        </tr>
+                        <tr class="total">
+                            <td><strong>Total</strong></td>
+                            <td>$100</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button type="button" class="btn btn-link" ng-click="vm.clearAll()">Clear All</button>
+                    <button type="submit" class="btn btn-success" ng-click="vm.submit()">Submit</button>
+                </div>
+
             </div>
         </div>
 
@@ -97,7 +111,10 @@
     <!-- endbower -->
 
     <!-- inject:js -->
-
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controller.js"></script>
+    <script src="scripts/developer.service.js"></script>
+    <script src="scripts/organization.service.js"></script>
     <!-- endinject -->
 </body>
 </html>

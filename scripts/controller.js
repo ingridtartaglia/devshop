@@ -7,8 +7,10 @@
 
     DevShopCtrl.$inject = ['Developers', 'Organization'];
 
-    function devShopCtrl(Developers, Organization){
+    function DevShopCtrl(Developers, Organization){
         var vm = this;
+
+        vm.developersCart = Developers;
 
         vm.addToCart = addToCart;
         vm.clearAll = clearAll;
@@ -19,26 +21,26 @@
         ////
 
     	function addToCart(developer){
-    		Developers.$add(developer);
+    		vm.developersCart.$add(developer);
     	};
 
         function clearAll(){
-    		Developers.forEach(function(developer){
-    			Developers.$remove(developer);
+    		vm.developersCart.forEach(function(developer){
+    			vm.developersCart.$remove(developer);
     		});
     	};
 
     	function remove(developer){
-    		Developers.$remove(developer);
+    		vm.developersCart.$remove(developer);
     	};
 
         function search(){
             Organization.getOrganization(vm.organizationName)
             .then(function(organizationResult){
     			vm.organization = organizationResult.data;
-    			Organization.getOrganizationMembers(vm.organizationName)
-    			.then(function(membersResult){
-    				vm.members = membersResult.data;
+    			Organization.getOrganizationDevelopers(vm.organizationName)
+    			.then(function(developersResult){
+    				vm.developers = developersResult.data;
     			})
     		});
     	};
