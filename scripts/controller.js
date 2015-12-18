@@ -21,6 +21,7 @@
         ////
 
     	function addToCart(developer){
+            developer.hour = 1;
     		vm.developersCart.$add(developer);
     	};
 
@@ -41,6 +42,9 @@
     			Organization.getOrganizationDevelopers(vm.organizationName)
     			.then(function(developersResult){
     				vm.developers = developersResult.data;
+                    vm.developers.forEach(function(developer){
+                        developer.price = 10;
+                    });
     			})
     		});
     	};
