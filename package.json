@@ -1,0 +1,26 @@
+{
+  "name": "devshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingridtartaglia/devshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ingridtartaglia/devshop/issues"
+  },
+  "homepage": "https://github.com/ingridtartaglia/devshop#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-server-livereload": "^1.5.4",
+    "wiredep": "^3.0.0"
+  }
+}
