@@ -35,7 +35,7 @@
         </div>
 
         <!-- dev org list -->
-        <div class="dev-list row">
+        <div class="dev-list row" ng-show="vm.searchResults">
             <p class="lead">2. Add developers</p>
             <div class="table-responsive">
                 <table class="table table-condensed">
@@ -64,8 +64,9 @@
         </div>
 
         <!-- cart list -->
-        <div class="dev-cart row">
+        <div class="dev-cart row" ng-show="vm.searchResults">
             <p class="lead">3. Check and submit your developer list</p>
+            <!-- <p>You haven't add any developers yet!</p> -->
             <div class="table-responsive">
                 <table class="table table-condensed">
                     <thead>
@@ -118,17 +119,17 @@
         <!-- shop details -->
         <div class="shop-details row" ng-show="vm.finishOrder">
             <p class="lead">4. Finish your order</p>
-            <form class="form-inline" role="form" name="discountForm" ng-hide="vm.hideForm">
-                <label for="a">Enter your code to get 30% discount:</label>
+            <form class="form-inline" role="form" name="discountForm" ng-hide="vm.hideDiscountForm">
+                <label>Enter your code to get 30% discount:</label>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your code" name="discountCode"
                             ng-model="vm.discountCode">
                 </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="discountForm.$invalid" ng-click="vm.validate()">Validate code</button>
+                <button type="submit" class="btn btn-primary" ng-click="vm.validate()">Validate Code</button>
             </form>
-            <div ng-show="vm.errorValidate">This code is invalid. Try again!</div>
+            <div ng-show="vm.errorOnValidate">This code is invalid. Try again!</div>
             <div>
-                <p ng-show="vm.hideForm">Code accepted!</p>
+                <p ng-show="vm.hideDiscountForm">Code accepted!</p>
                 <p>Total price: {{vm.sum | currency}}</p>
                 <div>
                     <button type="submit" class="btn btn-primary" ng-click="vm.shopDevelopers()">Shop now</button>

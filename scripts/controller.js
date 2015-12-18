@@ -11,9 +11,10 @@
         var vm = this;
 
         vm.developersCart = Developers;
-        vm.errorValidate = false;
+        vm.errorOnValidate = false;
         vm.finishOrder = false;
         vm.orderSuccess = false;
+        vm.searchResults = false;
 
         vm.addToCart = addToCart;
         vm.clearAll = clearAll;
@@ -58,6 +59,7 @@
     			Organization.getOrganizationDevelopers(vm.organizationName)
     			.then(function(developersResult){
     				vm.developers = developersResult.data;
+                    vm.searchResults = true;
                     vm.developers.forEach(function(developer){
                         developer.price = 10;
                         if (_.find(vm.developersCart, 'login', developer.login)){
@@ -89,11 +91,11 @@
         function validate(){
             if (vm.discountCode === "SHIPTO") {
                 vm.sum = vm.sum * 0.7;
-                vm.errorValidate = false;
-                vm.hideForm = true;
+                vm.errorOnValidate = false;
+                vm.hideDiscountForm = true;
             }
             else {
-                vm.errorValidate = true;
+                vm.errorOnValidate = true;
             }
         }
 
