@@ -15,7 +15,7 @@
     <!-- endinject -->
 
 </head>
-<body ng-controller="devShopCtrl">
+<body ng-controller="DevShopCtrl as vm">
 
     <div class="container">
         <div class="row">
@@ -28,7 +28,7 @@
             <form class="form-inline" role="form" name="searchOrganizationForm">
                 <div class="form-group">
                     <input type="search" class="form-control" placeholder="Type an organization" name="search"
-                            ng-model="organizationName">
+                            ng-model="vm.organizationName">
                 </div>
                 <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
             </form>
@@ -50,7 +50,7 @@
                     <tr class="product">
                         <td>{{developer.username}}</td>
                         <td>{{developer.price}}</td>
-                        <td><button type="submit" class="btn btn-success" ng-click="addToCart(developer)">Add to cart</button></td>
+                        <td><button type="submit" class="btn btn-success" ng-click="addToCart()">Add to cart</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -68,10 +68,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="product" ng-repeat="developer in Developers">
+                    <tr class="product">
                         <td>{{developer.username}}</td>
                         <td>{{developer.price}}</td>
-                        <td><button class="btn btn-danger pull-right" ng-click="remove(developer)">Remove</button></td>
+                        <td><button class="btn btn-danger pull-right" ng-click="remove()">Remove</button></td>
                     </tr>
                     <tr class="total">
                         <td><strong>Total</strong></td>
