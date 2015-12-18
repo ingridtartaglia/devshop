@@ -17,22 +17,33 @@
         vm.remove = remove;
         vm.search = search;
         vm.submit = submit;
+        vm.sumSubtotal = sumSubtotal;
+
+        vm.developersCart.$watch(sumSubtotal);
 
         ////
 
     	function addToCart(developer){
             developer.hour = 1;
+            developer.isAdded = true;
     		vm.developersCart.$add(developer);
     	};
 
         function clearAll(){
-    		vm.developersCart.forEach(function(developer){
-    			vm.developersCart.$remove(developer);
+    		vm.developersCart.forEach(function(cartDeveloper){
+    			vm.developersCart.$remove(cartDeveloper);
     		});
+            vm.developers.forEach(function(developer){
+                developer.isAdded = false;
+            });
     	};
 
-    	function remove(developer){
-    		vm.developersCart.$remove(developer);
+    	function remove(cartDeveloper){
+            var dev = _.find(vm.developers, 'login', cartDeveloper.login);
+            if (dev){
+                dev.isAdded = false;
+            }
+            vm.developersCart.$remove(cartDeveloper);
     	};
 
         function search(){
@@ -44,12 +55,25 @@
     				vm.developers = developersResult.data;
                     vm.developers.forEach(function(developer){
                         developer.price = 10;
+                        if (_.find(vm.developersCart, 'login', developer.login)){
+                            developer.isAdded = true;
+                        }
+
                     });
     			})
     		});
     	};
 
     	function submit(){};
+
+        function sumSubtotal(){
+            vm.sum = 0;
+            vm.developersCart.forEach(function(developer){
+                if (developer.hour != null) {
+                    vm.sum = vm.sum + (developer.hour * developer.price);
+                }
+            });
+        }
 
     };
 

@@ -51,10 +51,11 @@
                             <td>
                                 <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}"> {{developer.login}}
                             </td>
-                            <td>{{developer.price}}</td>
+                            <td>{{developer.price | currency}}</td>
                             <td>
                                 <a class="btn btn-link btn-sm" role="button" target="_blank" ng-href="{{developer.html_url}}">See profile</a>
-                                <button type="submit" class="btn btn-success btn-sm" ng-click="vm.addToCart(developer)">Add to cart</button>
+                                <button type="submit" class="btn btn-success btn-sm" ng-click="vm.addToCart(developer)"
+                                        ng-disabled="developer.isAdded">Add to cart</button>
                             </td>
                         </tr>
                     </tbody>
@@ -70,28 +71,30 @@
                     <thead>
                         <tr>
                             <th>Username</th>
+                            <th>Price per hour</th>
                             <th>Hours</th>
-                            <th>Price</th>
+                            <th>Subtotal</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="developer in vm.developersCart">
-                            <td class="col-xs-4">
+                            <td>
                                 <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}"> {{developer.login}}
                             </td>
-                            <td class="col-xs-2">
+                            <td>{{developer.price | currency}}</td>
+                            <td>
                                 <form class="form-inline" role="form" name="developerHourForm">
                                 <input type="number" class="form-control input-sm hour-input" name="devHour" min="1"
-                                        ng-model="developer.hour" required>
+                                        ng-model="developer.hour" ng-change="vm.sumSubtotal()" required>
                                 <div ng-messages="developerHourForm.devHour.$error">
                                     <div ng-message="required">This is required.</div>
                                     <div ng-message="min">Minimum 1 hour.</div>
                                 </div>
                                 </form>
                             </td>
-                            <td class="col-xs-2">$ {{developer.price}}</td>
-                            <td class="col-xs-4">
+                            <td>{{developer.hour * developer.price | currency}}</td>
+                            <td>
                                 <a class="btn btn-link btn-sm" role="button" target="_blank" ng-href="{{developer.html_url}}">See profile</a>
                                 <button class="btn btn-danger btn-sm" ng-click="vm.remove(developer)">Remove</button>
                             </td>
@@ -99,7 +102,8 @@
                         <tr class="total">
                             <td><strong>Total</strong></td>
                             <td></td>
-                            <td>$100</td>
+                            <td></td>
+                            <td>{{vm.sum | currency }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -121,6 +125,7 @@
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <!-- endbower -->
 
     <!-- inject:js -->
