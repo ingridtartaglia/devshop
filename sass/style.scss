@@ -1,15 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-$bigfont: 1.25em;
-$font: 1em;
-$smallfont: 0.75em;
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
 
 
-// general
+// General
 
 * { font-family: 'Open Sans', sans-serif; }
 
@@ -23,25 +19,50 @@ $smallfont: 0.75em;
     -webkit-border-radius: 0;
 }
 
+input[type="text"], textarea {
+    background-color: white;
+}
+
+
+// header:
+.jumbotron {
+    color: white;
+    background-color: black;
+    margin-bottom: 0;
+}
+
+// search bar
+.search-input {
+    padding: 3em 20em;
+    @media screen and (max-width: 768px) {
+        padding: 3em;
+    }
+    @media screen and (min-width: 769px) {
+        padding: 3em 10em;
+    }
+}
+
+
+// first step:
+.developer-avatar {
+    height: 40px;
+    width: 40px;
+}
+
+
+// second step:
 .table-responsive {
     border-color: transparent;
 }
 
 .error-input-msg {
     color: red;
-    font-size: $smallfont;
+    font-size: 10px;
 }
 
-////
-
-.jumbotron {
-    color: white;
-    background-color: black;
-}
-
-.developer-avatar {
-    height: 40px;
-    width: 40px;
+.developer-avatar-2 {
+    height: 30px;
+    width: 30px;
 }
 
 .hour-input {

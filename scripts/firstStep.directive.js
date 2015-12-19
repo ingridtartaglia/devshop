@@ -7,8 +7,10 @@ function firstStep() {
         templateUrl: '/views/firstStep.html',
         restrict: 'E',
         controller: firstStepCtrl,
-        controllerAs: 'vm',
-        bindToController: true
+        controllerAs: 'firstStep',
+        bindToController: {
+            developers: '='
+        }
     };
     return directive;
 };
@@ -24,31 +26,11 @@ function firstStepCtrl($scope, Developers, Organization) {
     vm.searchResults = false;
 
     vm.addToCart = addToCart;
-    vm.search = search;
 
     function addToCart(developer){
         developer.hour = 1;
         developer.isAdded = true;
         vm.developersCart.$add(developer);
-    };
-
-    function search(){
-        Organization.getOrganization(vm.organizationName)
-        .then(function(organizationResult){
-            vm.organization = organizationResult.data;
-            Organization.getOrganizationDevelopers(vm.organizationName)
-            .then(function(developersResult){
-                vm.developers = developersResult.data;
-                vm.searchResults = true;
-                vm.developers.forEach(function(developer){
-                    developer.price = 10;
-                    if (_.find(vm.developersCart, 'login', developer.login)){
-                        developer.isAdded = true;
-                    }
-
-                });
-            })
-        });
     };
 
 }

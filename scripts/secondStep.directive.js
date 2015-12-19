@@ -7,7 +7,7 @@ function secondStep() {
         templateUrl: '/views/secondStep.html',
         restrict: 'E',
         controller: secondStepCtrl,
-        controllerAs: 'vm',
+        controllerAs: 'secondStep',
         bindToController: true
     };
     return directive;
@@ -21,10 +21,6 @@ function secondStepCtrl($scope, Developers, Organization){
     var vm = this;
 
     vm.developersCart = Developers;
-    vm.errorOnValidate = false;
-    vm.finishOrder = false;
-    vm.orderSuccess = false;
-    vm.searchResults = false;
 
     vm.clearAll = clearAll;
     vm.remove = remove;
