@@ -1,0 +1,40 @@
+<!-- search github organization -->
+<p class="lead">1. Search a GitHub's organization</p>
+<div class="input-group">
+    <input type="search" class="form-control" placeholder="Type an organization" name="search"
+    ng-model="vm.organizationName">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" ng-click="vm.search()">Search</button>
+    </span>
+</div>
+
+<!-- dev org list -->
+<div ng-show="vm.searchResults">
+
+    <p class="lead">2. Add developers</p>
+
+    <div ng-repeat="developer in vm.developers">
+        <div class="media" style="margin-bottom:20px">
+
+            <div class="media-left media-middle">
+                <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}">
+            </div>
+
+            <div class="media-body">
+                <h5 class="list-group-item-heading">
+                    <a ng-href="{{developer.html_url}}" target="_blank">
+                        {{developer.login}}
+                    </a>
+                </h5>
+                <p class="list-group-item-text">{{developer.price|currency}}</p>
+            </div>
+
+            <div class="media-right">
+                <button type="submit" class="btn btn-success btn-sm" ng-click="vm.addToCart(developer)"
+                ng-disabled="developer.isAdded">Add to cart</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,59 @@
+<div ng-show="vm.searchResults">
+
+    <p class="lead">3. Check and submit your developer list</p>
+
+    <p>You haven't add any developers yet!</p>
+
+    <div class="table-responsive">
+        <table class="table table-condensed">
+
+            <thead>
+                <tr>
+                    <th class="col-xs-3">Username</th>
+                    <th class="col-xs-2">Price per hour</th>
+                    <th class="col-xs-2">Hours</th>
+                    <th class="col-xs-3">Subtotal</th>
+                    <th class="col-xs-2">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="developer in vm.developersCart">
+                    <td>
+                        <img class="developer-avatar img-circle" ng-src="{{developer.avatar_url}}"> {{developer.login}}
+                    </td>
+                    <td style="padding-top:10px">{{developer.price | currency}}</td>
+                    <td>
+                        <form class="form-inline" role="form" name="developerHourForm">
+                        <input type="number" class="form-control input-sm hour-input" name="devHour" min="1"
+                                ng-model="developer.hour" ng-change="vm.sumSubtotal()" required>
+                        <div ng-messages="developerHourForm.devHour.$error">
+                            <div ng-message="required" class="error-input-msg">This is required.</div>
+                            <div ng-message="min" class="error-input-msg">Minimum 1 hour.</div>
+                        </div>
+                        </form>
+                    </td>
+                    <td style="padding-top:10px">{{developer.hour * developer.price | currency}}</td>
+                    <td>
+                        <a class="btn btn-link btn-sm" role="button" target="_blank" ng-href="{{developer.html_url}}">See profile</a>
+                        <button class="btn btn-danger btn-sm" ng-click="vm.remove(developer)">Remove</button>
+                    </td>
+                </tr>
+
+                <tr class="total">
+                    <td style="font-size:1.25em"><strong>Total</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-size:1.25em"><strong>{{vm.sum | currency }}</strong></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="pull-right">
+            <button type="button" class="btn btn-link btn-lg" ng-click="vm.clearAll()">Clear All</button>
+            <button type="submit" class="btn btn-success btn-lg" ng-click="vm.submit()">Continue</button>
+        </div>
+
+    </div>
+</div>

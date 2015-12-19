@@ -13,10 +13,6 @@
   -moz-border-radius: 0;
   -webkit-border-radius: 0; }
 
-.dev-step-description {
-  font-size: 1.25em;
-  margin-bottom: 1.5em; }
-
 .table-responsive {
   border-color: transparent; }
 
@@ -28,19 +24,9 @@
   color: white;
   background-color: black; }
 
-.dev-step {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding: 2em; }
-
-.div-success {
-  margin: 2em 0 0 0;
-  color: green;
-  font-size: 2em; }
-
 .developer-avatar {
-  height: 30px;
-  width: 30px; }
+  height: 40px;
+  width: 40px; }
 
 .hour-input {
   max-width: 80px; }
