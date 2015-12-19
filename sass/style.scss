@@ -1,10 +1,62 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+$bigfont: 1.25em;
+$font: 1em;
+$smallfont: 0.75em;
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
 
-.org-search, .dev-list, .dev-cart, .shop-details {
-    margin-bottom: 5em;
+
+// general
+
+* { font-family: 'Open Sans', sans-serif; }
+
+.btn {
+    border-color: transparent;
 }
+
+.btn, .form-control {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.dev-step-description {
+    font-size: $bigfont;
+    margin-bottom: 1.5em;
+}
+
+.table-responsive {
+    border-color: transparent;
+}
+
+.error-input-msg {
+    color: red;
+    font-size: $smallfont;
+}
+
+////
+
+.jumbotron {
+    color: white;
+    background-color: black;
+}
+
+.dev-step {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 2em;
+}
+
+.div-success {
+    margin: 2em 0 0 0;
+    color: green;
+    font-size: 2em;
+}
+
+//
 
 .developer-avatar {
     height: 30px;
