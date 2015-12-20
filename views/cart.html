@@ -20,7 +20,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody ng-form="developersCartForm">
                 <tr ng-repeat="developer in cart.developersCart">
 
                     <td>
@@ -60,7 +60,8 @@
 
         <div class="pull-right cart-buttons">
             <button type="button" class="btn btn-link btn-lg" ng-click="cart.clearAll()">Clear All</button>
-            <button type="submit" class="btn btn-success btn-lg" ng-click="cart.submit()">Continue</button>
+            <button type="submit" class="btn btn-success btn-lg" ng-click="cart.submit()"
+                    ng-disabled="developersCartForm.$invalid">Continue</button>
         </div>
     </div>
 
