@@ -39,6 +39,9 @@ input[type="text"], textarea {
     padding: 1em 2em 2em 2em;
     margin-bottom: 5em;
     background: #ebf8cf;
+    @media (min-width:768px) and (max-width:1024px){
+        padding: 1em;
+    }
     .list-org-not-found {
         color: #e20202;
         margin-bottom: 0;
@@ -68,6 +71,9 @@ input[type="text"], textarea {
     margin-bottom: 5em;
     background: #E6EFED;
     @media screen and (max-width: 768px) {
+        padding: 1em;
+    }
+    @media (min-width:768px) and (max-width:1024px){
         padding: 1em;
     }
     h3 {
