@@ -39,6 +39,11 @@ input[type="text"], textarea {
     padding: 1em 2em 2em 2em;
     margin-bottom: 5em;
     background: #ebf8cf;
+    .list-org-not-found {
+        color: #e20202;
+        margin-bottom: 0;
+        padding-top:10px;
+    }
     h3 {
         margin-bottom: 1em
     }

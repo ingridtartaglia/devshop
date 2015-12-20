@@ -29,10 +29,10 @@
                 <search></search>
             </div>
 
-            <div class="col-xs-12 col-sm-4" ng-show="devList.developers">
-                <dev-list developers="search.developers"></dev-list>
+            <div class="col-xs-12 col-sm-4" ng-show="devList.developers || devList.organizationNotFound">
+                <dev-list developers="search.developers" organization-not-found="search.organizationNotFound"></dev-list>
             </div>
-            <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers}">
+            <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers || devList.organizationNotFound}">
                 <cart></cart>
             </div>
         </div>

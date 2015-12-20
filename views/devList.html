@@ -1,31 +1,49 @@
 <!-- dev org list -->
 <div class="list">
 
-    <h3>Add developers</h3>
+    <div ng-show="devList.organizationNotFound">
+        <p class="list-org-not-found">
+            <i class="fa fa-exclamation-triangle"></i>
+            Sorry, the organization does not exist.<br>Please enter another name.
+        </p>
+    </div>
 
-    <div ng-repeat="developer in devList.developers">
-        <div class="media list-dev-info">
+    <div ng-show="devList.developers.length == 0">
+        <p class="list-org-not-found">
+            <i class="fa fa-exclamation-triangle"></i>
+            Sorry, there are no developers in this organization. Please enter another name.
+        </p>
+    </div>
 
-            <div class="media-left media-middle">
-                <img class="img-circle" ng-src="{{developer.avatar_url}}">
+    <div ng-show="!devList.organizationNotFound && devList.developers.length > 0">
+
+            <h3>Add developers</h3>
+
+            <div ng-repeat="developer in devList.developers">
+                <div class="media list-dev-info">
+
+                    <div class="media-left media-middle">
+                        <img class="img-circle" ng-src="{{developer.avatar_url}}">
+                    </div>
+
+                    <div class="media-body">
+                        <h5 class="list-group-item-heading">
+                            <a ng-href="{{developer.html_url}}" target="_blank">
+                                {{developer.login}}
+                            </a>
+                        </h5>
+                        <p class="list-group-item-text">{{developer.price|currency}}</p>
+                    </div>
+
+                    <div class="media-right list-action">
+                        <button type="button" class="btn btn-link" ng-click="devList.addToCart(developer)" ng-disabled="developer.isAdded">
+                            <i class="fa fa-shopping-cart fa-lg"></i>
+                        </button>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="media-body">
-                <h5 class="list-group-item-heading">
-                    <a ng-href="{{developer.html_url}}" target="_blank">
-                        {{developer.login}}
-                    </a>
-                </h5>
-                <p class="list-group-item-text">{{developer.price|currency}}</p>
-            </div>
-
-            <div class="media-right list-action">
-                <button type="button" class="btn btn-link" ng-click="devList.addToCart(developer)" ng-disabled="developer.isAdded">
-                    <i class="fa fa-shopping-cart fa-lg"></i>
-                </button>
-            </div>
-
-        </div>
     </div>
 
 </div>

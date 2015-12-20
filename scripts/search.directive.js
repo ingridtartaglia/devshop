@@ -23,10 +23,13 @@ function searchCtrl($scope, Developers, Organization) {
 
     function search(){
         Organization.getOrganization(vm.organizationName)
-        .then(function(organizationResult){
+        .then(getOrganizationSuccess, getOrganizationError);
+
+        function getOrganizationSuccess(organizationResult){
             vm.organization = organizationResult.data;
             Organization.getOrganizationDevelopers(vm.organizationName)
             .then(function(developersResult){
+                vm.organizationNotFound = false;
                 vm.developers = developersResult.data;
                 vm.developers.forEach(function(developer){
                     developer.price = 10;
@@ -35,6 +38,10 @@ function searchCtrl($scope, Developers, Organization) {
                     }
                 });
             })
-        });
-    };
+        }
+
+        function getOrganizationError(){
+            vm.organizationNotFound = true;
+        }
+    }
 }

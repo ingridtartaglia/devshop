@@ -9,7 +9,8 @@ function devList() {
         controller: devListCtrl,
         controllerAs: 'devList',
         bindToController: {
-            developers: '='
+            developers: '=',
+            organizationNotFound: '='
         }
     };
     return directive;
@@ -23,7 +24,6 @@ function devListCtrl($scope, Developers, Organization) {
     var vm = this;
 
     vm.developersCart = Developers;
-    vm.searchResults = false;
 
     vm.addToCart = addToCart;
 
