@@ -23,14 +23,6 @@ input[type="text"], textarea {
     background-color: white;
 }
 
-
-// header:
-.jumbotron {
-    color: white;
-    background-color: black;
-    margin-bottom: 0;
-}
-
 // search bar
 .search-input {
     padding: 3em 20em;
@@ -43,10 +35,27 @@ input[type="text"], textarea {
 }
 
 
-// first step:
-.developer-avatar {
-    height: 35px;
-    width: 35px;
+// dev list
+.list {
+    padding: 1em 2em 2em 2em;
+    margin-bottom: 5em;
+    background: #ebf8cf;
+    h3 {
+        margin-bottom: 1em
+    }
+    .list-dev-info {
+        margin-bottom: 15px;
+        img {
+            height: 35px;
+            width: 35px;
+        }
+    }
+    .list-action {
+        .btn-link {
+            color: green;
+            text-decoration: none;
+        }
+    }
 }
 
 
@@ -59,7 +68,8 @@ input[type="text"], textarea {
         margin-bottom: 1em
     }
     .cart-empty {
-        margin-top: 3em
+        margin-top: 3em;
+        font-size: 1.2em
     }
     .table-responsive {
         border-color: transparent;

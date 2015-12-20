@@ -1,13 +1,13 @@
 angular
     .module('app')
-    .directive('firstStep', firstStep);
+    .directive('devList', devList);
 
-function firstStep() {
+function devList() {
     var directive = {
-        templateUrl: '/views/firstStep.html',
+        templateUrl: '/views/devList.html',
         restrict: 'E',
-        controller: firstStepCtrl,
-        controllerAs: 'firstStep',
+        controller: devListCtrl,
+        controllerAs: 'devList',
         bindToController: {
             developers: '='
         }
@@ -17,9 +17,9 @@ function firstStep() {
 
 /////
 
-firstStepCtrl.$inject = ['$scope', 'Developers', 'Organization'];
+devListCtrl.$inject = ['$scope', 'Developers', 'Organization'];
 
-function firstStepCtrl($scope, Developers, Organization) {
+function devListCtrl($scope, Developers, Organization) {
     var vm = this;
 
     vm.developersCart = Developers;

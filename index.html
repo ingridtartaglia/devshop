@@ -17,14 +17,11 @@
 
 </head>
 <body>
-
-    <header class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <h1>Dev Shop</h1>
-            </div>
+    <div class="container">
+        <div class="row">
+            <h1>Dev Shop</h1>
         </div>
-    </header>
+    </div>
 
     <div class="container">
         <div class="row" ng-hide="cart.finishOrder">
@@ -32,10 +29,10 @@
                 <search></search>
             </div>
 
-            <div class="col-xs-12 col-sm-4" ng-show="firstStep.developers">
-                <first-step developers="search.developers"></first-step>
+            <div class="col-xs-12 col-sm-4" ng-show="devList.developers">
+                <dev-list developers="search.developers"></dev-list>
             </div>
-            <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': firstStep.developers}">
+            <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers}">
                 <cart></cart>
             </div>
         </div>
@@ -59,7 +56,7 @@
     <!-- inject:js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/developer.service.js"></script>
-    <script src="scripts/firstStep.directive.js"></script>
+    <script src="scripts/devList.directive.js"></script>
     <script src="scripts/lastStep.directive.js"></script>
     <script src="scripts/organization.service.js"></script>
     <script src="scripts/search.directive.js"></script>
