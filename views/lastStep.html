@@ -1,33 +1,30 @@
 <!-- shop details -->
 
-<div class="dev-step row" ng-show="vm.finishOrder">
-
     <p class="dev-step-description">Finish your order</p>
 
-    <form class="form-inline" role="form" name="discountForm" style="margin-top:2em;" ng-hide="vm.hideDiscountForm">
+    <form class="form-inline" role="form" name="discountForm" style="margin-top:2em;"
+            ng-hide="lastStep.hideDiscountForm || lastStep.orderSuccess">
         <p>Enter your code to get 30% discount:</p>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Enter your code" name="discountCode"
-                    ng-model="vm.discountCode">
+                    ng-model="lastStep.discountCode">
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="vm.validate()">Validate Code</button>
+        <button type="submit" class="btn btn-primary" ng-click="lastStep.validate()">Validate Code</button>
     </form>
 
-    <div ng-show="vm.errorOnValidate">
+    <div ng-show="lastStep.errorOnValidate">
         <i class="fa fa-exclamation-triangle"></i> This code is invalid. Try again!
     </div>
 
-    <div>
-        <p ng-show="vm.hideDiscountForm">Code accepted!</p>
-        <p class="lead" style="margin-top:2em; margin-bottom:2em">Total price: <strong>{{vm.sum | currency}}</strong></p>
+    <div ng-hide="lastStep.orderSuccess">
+        <p ng-show="lastStep.hideDiscountForm">Code accepted!</p>
+        <p class="lead" style="margin-top:2em; margin-bottom:2em">Total price: <strong>{{lastStep.sum | currency}}</strong></p>
         <div>
-            <button type="submit" class="btn btn-success btn-lg" ng-click="vm.shopDevelopers()">Shop now</button>
+            <button type="submit" class="btn btn-success btn-lg" ng-click="lastStep.shopDevelopers()">Shop now</button>
         </div>
     </div>
 
-    <div class="div-success" ng-show="vm.orderSuccess">
+    <div class="div-success" ng-show="lastStep.orderSuccess">
         <i class="fa fa-check-circle"></i>
         <p>Congratulations!</p>
     </div>
-
-</div>

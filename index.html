@@ -27,11 +27,11 @@
     </header>
 
     <div class="container">
-        <div class="row">
+        <div class="row" ng-hide="secondStep.finishOrder">
             <div class="col-xs-12">
                 <search></search>
             </div>
-        
+
             <div class="col-xs-12 col-sm-4">
                 <first-step developers="search.developers"></first-step>
             </div>
@@ -39,32 +39,12 @@
                 <second-step></second-step>
             </div>
         </div>
-    </div>
-
-
-        <!-- shop details -->
-        <!-- <div class="dev-step row" ng-show="vm.finishOrder">
-            <p class="dev-step-description">4. Finish your order</p>
-            <form class="form-inline" role="form" name="discountForm" style="margin-top:2em;" ng-hide="vm.hideDiscountForm">
-                <p>Enter your code to get 30% discount:</p>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter your code" name="discountCode"
-                            ng-model="vm.discountCode">
-                </div>
-                <button type="submit" class="btn btn-primary" ng-click="vm.validate()">Validate Code</button>
-            </form>
-            <div ng-show="vm.errorOnValidate">This code is invalid. Try again!</div>
-            <div>
-                <p ng-show="vm.hideDiscountForm">Code accepted!</p>
-                <p class="lead" style="margin-top:2em; margin-bottom:2em">Total price: <strong>{{vm.sum | currency}}</strong></p>
-                <div>
-                    <button type="submit" class="btn btn-success btn-lg" ng-click="vm.shopDevelopers()">Shop now</button>
-                </div>
+        <div class="row" ng-show="secondStep.finishOrder">
+            <div class="col-xs-12">
+                <last-step sum="secondStep.sum"></last-step>
             </div>
-            <div class="div-success" ng-show="vm.orderSuccess">Congratulations!</div>
         </div>
-
-    </div> -->
+    </div>
 
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
