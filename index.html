@@ -33,13 +33,13 @@
                 <dev-list developers="search.developers" organization-not-found="search.organizationNotFound"></dev-list>
             </div>
             <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers || devList.organizationNotFound}">
-                <cart></cart>
+                <cart developers="devList.developers"></cart>
             </div>
         </div>
 
         <div class="row" ng-show="cart.finishOrder">
             <div class="col-xs-12">
-                <payment sum="cart.sum"></payment>
+                <payment sum="cart.sum" finish-order="cart.finishOrder"></payment>
             </div>
         </div>
     </div>

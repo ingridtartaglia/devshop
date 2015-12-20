@@ -21,9 +21,11 @@
             <i class="fa fa-check"></i> Code accepted!
         </p>
         <p class="lead payment-total">Total: <strong>{{payment.sum | currency}}</strong></p>
-        <div>
-            <button type="submit" class="btn btn-success btn-lg" ng-click="payment.shopDevelopers()">Shop now</button>
+        <div class="row payment-buttons">
+            <button type="button" class="btn btn-link btn-lg pull-left" ng-click="payment.back()">Back</button>
+            <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="payment.shopDevelopers()">Finish</button>
         </div>
+
     </div>
 
     <div class="payment-success" ng-show="payment.orderSuccess">

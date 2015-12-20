@@ -102,6 +102,8 @@ input[type="text"], textarea {
   .payment .payment-total {
     margin-top: 2em;
     margin-bottom: 2em; }
+  .payment .payment-buttons {
+    margin-right: 0; }
   .payment .payment-success {
     color: green; }
     .payment .payment-success p {

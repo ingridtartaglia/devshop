@@ -9,7 +9,8 @@ function payment() {
         controller: paymentCtrl,
         controllerAs: 'payment',
         bindToController: {
-            sum: '='
+            sum: '=',
+            finishOrder: '='
         }
     };
     return directive;
@@ -26,6 +27,7 @@ function paymentCtrl($scope, Developers, Organization, $window) {
     vm.errorOnValidate = false;
     vm.orderSuccess = false;
 
+    vm.back = back;
     vm.shopAgain = shopAgain;
     vm.shopDevelopers = shopDevelopers;
     vm.sumSubtotal = sumSubtotal;
@@ -35,16 +37,20 @@ function paymentCtrl($scope, Developers, Organization, $window) {
 
     ////
 
+    function back(){
+        vm.finishOrder = false;
+    }
+
     function shopAgain(){
         $window.location.reload();
         vm.developersCart.forEach(function(cartDeveloper){
             vm.developersCart.$remove(cartDeveloper);
         });
-    };
+    }
 
     function shopDevelopers(){
         vm.orderSuccess = true;
-    };
+    }
 
     function sumSubtotal(){
         vm.sum = 0;
@@ -53,7 +59,7 @@ function paymentCtrl($scope, Developers, Organization, $window) {
                 vm.sum = vm.sum + (developer.hour * developer.price);
             }
         });
-    };
+    }
 
     function validate(){
         if (vm.discountCode === "SHIPTO") {

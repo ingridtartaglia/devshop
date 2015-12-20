@@ -8,7 +8,9 @@ function cart() {
         restrict: 'E',
         controller: cartCtrl,
         controllerAs: 'cart',
-        bindToController: true
+        bindToController: {
+            developers: '='
+        }
     };
     return directive;
 };
