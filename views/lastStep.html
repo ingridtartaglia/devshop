@@ -2,7 +2,7 @@
 
 <div class="dev-step row" ng-show="vm.finishOrder">
 
-    <p class="dev-step-description">4. Finish your order</p>
+    <p class="dev-step-description">Finish your order</p>
 
     <form class="form-inline" role="form" name="discountForm" style="margin-top:2em;" ng-hide="vm.hideDiscountForm">
         <p>Enter your code to get 30% discount:</p>
@@ -13,7 +13,9 @@
         <button type="submit" class="btn btn-primary" ng-click="vm.validate()">Validate Code</button>
     </form>
 
-    <div ng-show="vm.errorOnValidate">This code is invalid. Try again!</div>
+    <div ng-show="vm.errorOnValidate">
+        <i class="fa fa-exclamation-triangle"></i> This code is invalid. Try again!
+    </div>
 
     <div>
         <p ng-show="vm.hideDiscountForm">Code accepted!</p>
@@ -23,6 +25,9 @@
         </div>
     </div>
 
-    <div class="div-success" ng-show="vm.orderSuccess">Congratulations!</div>
+    <div class="div-success" ng-show="vm.orderSuccess">
+        <i class="fa fa-check-circle"></i>
+        <p>Congratulations!</p>
+    </div>
 
 </div>
