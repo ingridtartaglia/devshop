@@ -1,13 +1,13 @@
 angular
     .module('app')
-    .directive('secondStep', secondStep);
+    .directive('cart', cart);
 
-function secondStep() {
+function cart() {
     var directive = {
-        templateUrl: '/views/secondStep.html',
+        templateUrl: '/views/cart.html',
         restrict: 'E',
-        controller: secondStepCtrl,
-        controllerAs: 'secondStep',
+        controller: cartCtrl,
+        controllerAs: 'cart',
         bindToController: true
     };
     return directive;
@@ -15,9 +15,9 @@ function secondStep() {
 
 ///
 
-secondStepCtrl.$inject = ['$scope', 'Developers', 'Organization'];
+cartCtrl.$inject = ['$scope', 'Developers', 'Organization'];
 
-function secondStepCtrl($scope, Developers, Organization){
+function cartCtrl($scope, Developers, Organization){
     var vm = this;
 
     vm.developersCart = Developers;
