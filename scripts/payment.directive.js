@@ -1,13 +1,13 @@
 angular
     .module('app')
-    .directive('lastStep', lastStep);
+    .directive('payment', payment);
 
-function lastStep() {
+function payment() {
     var directive = {
-        templateUrl: '/views/lastStep.html',
+        templateUrl: '/views/payment.html',
         restrict: 'E',
-        controller: lastStepCtrl,
-        controllerAs: 'lastStep',
+        controller: paymentCtrl,
+        controllerAs: 'payment',
         bindToController: {
             sum: '='
         }
@@ -17,15 +17,16 @@ function lastStep() {
 
 /////
 
-lastStepCtrl.$inject = ['$scope', 'Developers', 'Organization'];
+paymentCtrl.$inject = ['$scope', 'Developers', 'Organization', '$window'];
 
-function lastStepCtrl($scope, Developers, Organization) {
+function paymentCtrl($scope, Developers, Organization, $window) {
     var vm = this;
 
     vm.developersCart = Developers;
     vm.errorOnValidate = false;
     vm.orderSuccess = false;
 
+    vm.shopAgain = shopAgain;
     vm.shopDevelopers = shopDevelopers;
     vm.sumSubtotal = sumSubtotal;
     vm.validate = validate;
@@ -33,6 +34,13 @@ function lastStepCtrl($scope, Developers, Organization) {
     vm.developersCart.$watch(sumSubtotal);
 
     ////
+
+    function shopAgain(){
+        $window.location.reload();
+        vm.developersCart.forEach(function(cartDeveloper){
+            vm.developersCart.$remove(cartDeveloper);
+        });
+    };
 
     function shopDevelopers(){
         vm.orderSuccess = true;

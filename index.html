@@ -39,7 +39,7 @@
 
         <div class="row" ng-show="cart.finishOrder">
             <div class="col-xs-12">
-                <last-step sum="cart.sum"></last-step>
+                <payment sum="cart.sum"></payment>
             </div>
         </div>
     </div>
@@ -55,12 +55,12 @@
 
     <!-- inject:js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/developer.service.js"></script>
-    <script src="scripts/devList.directive.js"></script>
-    <script src="scripts/lastStep.directive.js"></script>
-    <script src="scripts/organization.service.js"></script>
-    <script src="scripts/search.directive.js"></script>
     <script src="scripts/cart.directive.js"></script>
+    <script src="scripts/devList.directive.js"></script>
+    <script src="scripts/developer.service.js"></script>
+    <script src="scripts/organization.service.js"></script>
+    <script src="scripts/payment.directive.js"></script>
+    <script src="scripts/search.directive.js"></script>
     <!-- endinject -->
 </body>
 </html>
