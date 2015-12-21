@@ -12,7 +12,8 @@
                 RestangularConfigurer
                 .setBaseUrl('https://api.github.com')
                 .setRestangularFields({
-                    id: "name"
+                    id: "name",
+                    selfLink: 'url'
                 })
                 .setFullResponse(true);
             }).all('orgs');

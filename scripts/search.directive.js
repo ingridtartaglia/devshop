@@ -44,10 +44,16 @@ function searchCtrl($scope, Developers, Organization) {
             vm.developers = developersResult.data;
             vm.pages = parse_link_header(developersResult.headers('link'));
             vm.developers.forEach(function(developer){
-                developer.price = 10;
                 if (_.find(vm.developersCart, 'login', developer.login)){
                     developer.isAdded = true;
                 }
+                developer.get().then(function(res){
+                    angular.extend(developer, res.data);
+                    developer.price = (5*developer.followers+2*developer.public_repos+developer.public_gists)/30;
+                    if(developer.price < 5){
+                        developer.price = 5;
+                    }
+                })
             });
         })
     }
