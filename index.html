@@ -6,15 +6,18 @@
     <title>Coding Challenge VTEX</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--build:css css/lib.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
+    <!-- endbuild -->
 
+    <!--build:css css/app.min.css -->
     <!-- inject:css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- endinject -->
-
+    <!-- endbuild -->
 </head>
 <body>
     <div class="container">
@@ -32,7 +35,7 @@
             <div class="col-xs-12 col-sm-4" ng-show="devList.developers || devList.organizationNotFound">
                 <dev-list developers="search.developers"
                         organization-not-found="search.organizationNotFound"
-                        search-developers="search.searchDevelopers" 
+                        search-developers="search.searchDevelopers"
                         pages="search.pages"></dev-list>
             </div>
             <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers || devList.organizationNotFound}">
@@ -47,6 +50,7 @@
         </div>
     </div>
 
+    <!--build:js js/lib.min.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -56,7 +60,9 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
+    <!-- endbuild -->
 
+    <!--build:js js/app.min.js -->
     <!-- inject:js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/cart.directive.js"></script>
@@ -66,5 +72,6 @@
     <script src="scripts/payment.directive.js"></script>
     <script src="scripts/search.directive.js"></script>
     <!-- endinject -->
+    <!-- endbuild -->
 </body>
 </html>
