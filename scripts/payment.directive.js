@@ -62,7 +62,7 @@ function paymentCtrl($scope, Developers, Organization, $window) {
     }
 
     function validate(){
-        if (vm.discountCode === "SHIPTO") {
+        if (vm.discountCode === "SHIPIT") {
             vm.discount = vm.sum * 0.3;
             vm.errorOnValidate = false;
             vm.hideDiscountForm = true;
