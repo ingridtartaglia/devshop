@@ -38,7 +38,7 @@ function cartCtrl($scope, Developers, Organization){
         vm.developers.forEach(function(developer){
             developer.isAdded = false;
         });
-    };
+    }
 
     function remove(cartDeveloper){
         var dev = _.find(vm.developers, 'login', cartDeveloper.login);
@@ -46,11 +46,11 @@ function cartCtrl($scope, Developers, Organization){
             dev.isAdded = false;
         }
         vm.developersCart.$remove(cartDeveloper);
-    };
+    }
 
     function submit(){
         vm.finishOrder = true;
-    };
+    }
 
     function sumSubtotal(){
         vm.sum = 0;
@@ -59,6 +59,6 @@ function cartCtrl($scope, Developers, Organization){
                 vm.sum = vm.sum + (developer.hour * developer.price);
             }
         });
-    };
+    }
 
 }

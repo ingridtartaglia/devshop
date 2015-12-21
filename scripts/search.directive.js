@@ -60,27 +60,26 @@ function searchCtrl($scope, Developers, Organization) {
     //    last
     // }
     function parse_link_header(header) {
-  if (header.length == 0) {
-    throw new Error("input must not be of zero length");
-  }
+        if (header.length == 0) {
+            throw new Error("input must not be of zero length");
+        }
 
-  // Split parts by comma
+        // Split parts by comma
+        var parts = header.split(',');
+        var links = {};
+        // Parse each part into a named link
+        _.each(parts, function(p) {
+            var section = p.split(';');
+            if (section.length != 2) {
+                throw new Error("section could not be split on ';'");
+            }
+            var url = section[0].replace(/<(.*)>/, '$1').trim();
+            var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+            var page = unescape(url.replace(new RegExp("^(?:.*[&\\?]" + escape('page')
+            .replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+            links[name] = page;
+        });
 
-  var parts = header.split(',');
-  var links = {};
-  // Parse each part into a named link
-  _.each(parts, function(p) {
-    var section = p.split(';');
-    if (section.length != 2) {
-      throw new Error("section could not be split on ';'");
+        return links;
     }
-    var url = section[0].replace(/<(.*)>/, '$1').trim();
-    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
-    var page = unescape(url.replace(new RegExp("^(?:.*[&\\?]" + escape('page')
-                .replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
-    links[name] = page;
-  });
-
-  return links;
-}
 }
