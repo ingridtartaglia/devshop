@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="row" ng-show="cart.finishOrder">
+        <div class="row" ng-if="cart.finishOrder">
             <div class="col-xs-12">
                 <payment sum="cart.sum" finish-order="cart.finishOrder"></payment>
             </div>
