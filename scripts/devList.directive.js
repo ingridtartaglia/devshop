@@ -10,7 +10,9 @@ function devList() {
         controllerAs: 'devList',
         bindToController: {
             developers: '=',
-            organizationNotFound: '='
+            organizationNotFound: '=',
+            searchDevelopers: '=',
+            pages: '='
         }
     };
     return directive;

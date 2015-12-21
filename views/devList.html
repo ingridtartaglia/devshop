@@ -44,6 +44,16 @@
                 </div>
             </div>
 
+            <div class="row">
+                <button type="button" class="btn btn-link pull-left"
+                        ng-click="devList.searchDevelopers(devList.pages.prev)"
+                        ng-disabled="!devList.pages.prev">Previous</button>
+                <button type="button" class="btn btn-link pull-right"
+                        ng-click="devList.searchDevelopers(devList.pages.next)"
+                        ng-disabled="!devList.pages.next">Next</button>
+            </div>
+
+
     </div>
 
 </div>

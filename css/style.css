@@ -16,6 +16,9 @@
 input[type="text"], textarea {
   background-color: white; }
 
+h1 {
+  margin-top: 1.75em; }
+
 .search-input {
   padding: 3em 20em; }
   @media screen and (max-width: 768px) {

@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1>Dev Shop</h1>
+            <h1 class="text-center">Dev Shop</h1>
         </div>
     </div>
 
@@ -30,7 +30,10 @@
             </div>
 
             <div class="col-xs-12 col-sm-4" ng-show="devList.developers || devList.organizationNotFound">
-                <dev-list developers="search.developers" organization-not-found="search.organizationNotFound"></dev-list>
+                <dev-list developers="search.developers"
+                        organization-not-found="search.organizationNotFound"
+                        search-developers="search.searchDevelopers" 
+                        pages="search.pages"></dev-list>
             </div>
             <div class="col-xs-12" ng-class="{'col-xs-12 col-sm-8': devList.developers || devList.organizationNotFound}">
                 <cart developers="devList.developers"></cart>
@@ -51,6 +54,8 @@
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
 
     <!-- inject:js -->
