@@ -21,6 +21,7 @@ function searchCtrl($scope, Developers, Organization) {
     var vm = this;
     vm.searchOrganization = searchOrganization;
     vm.searchDevelopers = searchDevelopers;
+    vm.developersCart = Developers;
 
     function searchOrganization(){
         var organization = Organization.get(vm.organizationName);
@@ -47,13 +48,6 @@ function searchCtrl($scope, Developers, Organization) {
                 if (_.find(vm.developersCart, 'login', developer.login)){
                     developer.isAdded = true;
                 }
-                developer.get().then(function(res){
-                    angular.extend(developer, res.data);
-                    developer.price = (5*developer.followers+2*developer.public_repos+developer.public_gists)/30;
-                    if(developer.price < 5){
-                        developer.price = 5;
-                    }
-                })
             });
         })
     }
