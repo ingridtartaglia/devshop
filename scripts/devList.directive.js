@@ -32,7 +32,7 @@ function devListCtrl($scope, Developers, Organization) {
     function addToCart(developer){
         developer.hour = 1;
         developer.isAdded = true;
-        vm.developersCart.$add(developer);
+        vm.developersCart.$add(developer.plain());
     };
 
 }
