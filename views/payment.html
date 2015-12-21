@@ -20,7 +20,15 @@
         <p ng-show="payment.hideDiscountForm" class="validate-success-msg">
             <i class="fa fa-check"></i> Code accepted!
         </p>
-        <p class="lead payment-total">Total: <strong>{{payment.sum | currency}}</strong></p>
+        <p class="lead payment-total">
+            Total:
+            <strong>
+                {{payment.sum | currency}}
+                <span ng-hide="!payment.discount">
+                    - {{payment.discount|currency}} = {{payment.sum - payment.discount | currency}}
+                </span>
+            </strong>
+        </p>
         <div class="row payment-buttons">
             <button type="button" class="btn btn-link btn-lg pull-left" ng-click="payment.back()">Back</button>
             <button type="submit" class="btn btn-success btn-lg pull-right" ng-click="payment.shopDevelopers()">Finish</button>
